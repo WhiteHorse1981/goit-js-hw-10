@@ -38,9 +38,9 @@ function onCountryInput() {
 function renderCountryList(countries) {
   const markup = countries
     .map(country => {
-      return `<li>
-      <img src="${country.flags.svg}" alt="Flag of ${country.name.official}" width="30" hight="20">
-         <b>${country.name.official}</p>
+      return `<li class="country-list__item">
+      <img class="country-list__img" src="${country.flags.svg}" alt="Flag of ${country.name.official}">
+         <p class="country-list__text">${country.name.official}</p>
                 </li>`;
     })
     .join('');
@@ -50,16 +50,23 @@ function renderCountryList(countries) {
 function renderOneCountry(countries) {
   const markup = countries
     .map(country => {
-      return `<li>
-      <img src="${country.flags.svg}" alt="Flag of ${
-        country.name.official
-      }" width="30" hight="20">
-         <b>${country.name.official}</b></p>
-            <p><b>Capital</b>: ${country.capital}</p>
-            <p><b>Population</b>: ${country.population}</p>
-            <p><b>Languages</b>: ${Object.values(country.languages)} </p>
-                </li>`;
+      return `<ul class="country-info-list">
+      <li class="country-info-list__item">
+      <img class="country-info-list__img" src="${
+        country.flags.svg
+      }" alt="Flag of ${country.name.official}">
+         <p class="country-info-list__title">${country.name.official}</p>
+            <p class="country-info-list__description"><b>Capital</b>: ${
+              country.capital
+            }</p>
+            <p class="country-info-list__description"><b>Population</b>: ${
+              country.population
+            }</p>
+            <p class="country-info-list__description"><b>Languages</b>: ${Object.values(
+              country.languages
+            )} </p>
+                </li></ul>`;
     })
     .join('');
-  countryList.innerHTML = markup;
+  countryInfo.innerHTML = markup;
 }
